@@ -1,41 +1,45 @@
-document.getElementById("cryptoSubmit").addEventListener("click", function(event) {
-    event.preventDefault();
-    const value = document.getElementById("cryptoInput").value.toUpperCase();
-    if (value === "")
-      return;
-    console.log(value);
-
-    const url = "https://api.pro.coinbase.com/products/" + value + "-USD";
-    fetch(url)
-      .then(function(response) {
-        return response.json();
-      }).then(function(json) {
-        let results = "";
-        results += "<div class=\"cryptoName\">";
-        results += '<h2>Base Pair: ' + json.display_name + "</h2>";
-        results += '<h2>Min Transaction: ' + json.base_min_size + json.base_currency + "</h2>";
-        results += '<h2>Max Transaction: ' + json.base_max_size + json.base_currency + "</h2>";
-        results += '<h2>Min to Max Funds per Trade: ' + json.min_market_funds + "-" + json.max_market_funds + "</h2>";
-        results += "</div>";
-        // results += "<div class=\"cryptoSymbol\">";
-        // results += '<h2 id=\"sym\">Symbol: ' + json.symbol + "</h2>";
-        // results += "</div>";
-        // results += "<div class=\"midtext\">";
-        // results += '<h1>:</h1>';
-        // results += "</div>";
-        // results += "<div class=\"rightstuff\">";
-        // for (let i=0; i < json.weather.length; i++) {
-        //   results += '<img src="http://openweathermap.org/img/w/' + json.weather[i].icon + '.png"/>';
-        // }
-        // results += '<h2>' + json.main.temp + " &deg;F</h2>"
-        // results += "<p>"
-        // for (let i=0; i < json.weather.length; i++) {
-        //   results += json.weather[i].description
-        //   if (i !== json.weather.length - 1)
-        //     results += ", ";
-        // }
-        // results += "</p>";
-        // results += "</div>";
-        document.getElementById("fill").innerHTML = results;
-      });
-  });
+let app = new Vue({
+  el: '#app',
+  data: {
+    error: false,
+    loading: true,
+    value: '',
+    baseCurr: '',
+    basePair: '',
+    minTrans: '',
+    maxTrans: '',
+    minFunds: '',
+    maxFunds: '',
+  },
+  methods: {
+    getResults() {
+      const self = this;
+      console.log(this.value);
+      self.loading = true;
+      const url = "https://api.pro.coinbase.com/products/" + this.value + "-USD";
+      console.log(this.value);
+      fetch(url)
+        .then(function(response) {
+          if(response.ok) {
+            return response.json();
+          } else {
+            throw new Error('consider yourself yote upon');
+          }
+        }).then(function(json) {
+          self.baseCurr = json.base_currency;
+          self.basePair = json.display_name;
+          self.minTrans = json.base_min_size;
+          self.maxTrans = json.base_max_size;
+          self.minFunds = json.min_market_funds;
+          self.maxFunds = json.max_market_funds;
+          self.loading = false;
+          self.error = false;
+          console.log(this.basePair);
+          console.log(this.loading);
+        }).catch(function(err){
+          self.error = true;
+          console.log(err);
+        });
+    },
+  }
+});

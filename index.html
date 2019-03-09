@@ -11,7 +11,7 @@
 
 <body class="body-home">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/index.html"><div class="logo">CBP</div> Cryptocurrency</a>
+    <a class="navbar-brand" href="/index.html"><div class="logo" style="margin-right: .3em;">CBP</div> Cryptocurrency</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -23,18 +23,29 @@
       </ul>
     </div>
   </nav>
-<div class="content-wrap-home">
-  <h1 style="font-family: Ubuntu;">Coinbase Pro Crypto Lookup</h1>
-  <h2><div class="HST">Enter any crypto abbreviation below for<br>trading stats of the cypto to appear.</div></h2>
-  <form>
-    <input id="cryptoInput" type="text" placeholder="i.e. btc, eth, etc."></input>
-    <input id="cryptoSubmit" type="submit" value="Search"></input>
-  </form>
-  <div id="fill"></div>
-</div> <!--END OF CONTENT-->
+  <div id="app" class="content-wrap-home">
+    <h1 style="font-family: Ubuntu; margin-bottom: -.2em;">Coinbase Pro</h1>
+    <h1 style="font-family: Ubuntu; font-size: 4em; margin-bottom: .6em;">Crypto Lookup</h1>
+    <h2><div class="HST">Enter any crypto abbreviation below for<br>trading stats of the cypto to appear.</div></h2>
+    <form v-on:submit.prevent="getResults">
+      <input v-model="value" placeholder="i.e. btc, eth, etc."></input>
+      <button type="submit">Search</button>
+    </form>
+    <div class="cryptoName">
+      <div v-if="error">
+        <h2>That is not a valid crypto abbreviation.</h2>
+      </div>
+      <div v-else>
+        <h2 v-if="basePair">Base Pair: {{basePair}}</h2>
+        <h2 v-if="minTrans && baseCurr">Min Transaction: {{minTrans}}{{baseCurr}}</h2>
+        <h2 v-if="maxTrans && baseCurr">Max Transaction: {{maxTrans}}{{baseCurr}}</h2>
+        <h2 v-if="minFunds && maxFunds">Min to Max Funds per Trade: {{minFunds}}-{{maxFunds}}</h2>
+      </div>
+    </div>
+  </div> <!--END OF CONTENT-->
   <footer>
     <div class="bg-secondary text-white top">
-      <div><a href="https://github.com/d-goods/cp2">GitHub</a></div>
+      <div><a href="https://github.com/d-goods/cp3">GitHub</a></div>
     </div>
     <div class="bg-dark text-white-50 bottom">
       <p>This is the fake copyright ©</p>
@@ -45,6 +56,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
   <script text="type/javascript" src="/script.js"></script>
 </body>
 
