@@ -1,0 +1,190 @@
+.body-home {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    position: relative;
+    min-width: 66rem;
+    min-height: 100vh;
+    background-color: black;
+}
+
+.body-reg {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    position: relative;
+    min-width: 66rem;
+    min-height: 100vh;
+    background-color: white;
+}
+
+
+form {
+    width: 100%;
+    margin: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    margin: .5em;
+    padding: 1em;
+}
+
+#fill {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+#fill h2 {
+    display: inline-block;
+    text-shadow: 0 0 .1em black;
+    font-weight: 700;
+    padding: 1em;
+}
+
+.cryptoName {
+    width: 100%;
+    text-align: center;
+}
+
+.logo {
+    display: inline-block;
+    padding: 0 .5em;
+    border: white solid .066em;
+    border-radius: .33em;
+    text-align: center;
+    width: 3em;
+}
+
+.logo:hover {
+    display: inline-block;
+    padding: 0 .5em;
+    border: solid white .066em;
+    border-radius: .33em;
+    background-color: white !important;
+    color: 	#343a40 !important;
+    font-weight: 600 !important;
+}
+
+.content-wrap-home {
+    flex: 1 1 auto;
+    position: relative;
+    display: inline-block;
+    font-family: Roboto;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 12em;
+    color: white !important;
+    background: url(/bgs/bitcoin2.jpg) top center no-repeat;
+    background-size: 133em;
+    background-position-y: -20em;
+    mix-blend-mode: difference !important;
+}
+
+.content-wrap-home h1 {
+    font-size: 6em;
+    text-shadow: 0 0 .1em black;
+    text-align: center;
+}
+
+.content-wrap-home h2 {
+    margin: 0em 2em;
+    text-shadow: 0 0 .1em black;
+    text-align: center;
+}
+
+.content-wrap {
+    flex: 1 1 auto;
+    position: relative;
+    display: inline-block;
+    font-family: Roboto;
+    padding: 1em;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 12em;
+    color: black !important;
+    mix-blend-mode: difference !important;
+}
+
+.content-wrap h1 {
+    font-size: 10em;
+    text-align: center;
+}
+
+.content-wrap h2, h3, h4 {
+    text-align: center;
+    padding-top: .6em;
+    margin: 0em 2em;
+}
+
+.content-wrap h3 {
+    color: rgb(3, 3, 8);
+}
+
+.content-wrap h4 {
+    color: gray;
+}
+
+.content-wrap > img {
+    display: block;
+    margin: 6em auto;
+    
+    max-width: 40em;
+    max-height: 30em;
+    object-fit: cover;
+}
+
+.HST {
+    display: inline-block;
+    background-color: rgba(255, 208, 164, 0.438);
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer .top {
+    padding: 1em;
+    display: inline-block;
+    min-height: 3em;
+    width: 100%;
+}
+
+footer .bottom {
+    text-align: center;
+    padding: 1em;
+    display: inline-block;
+    width: 100%;
+}
+
+footer div div {
+    text-align: center;
+}
+
+footer a {
+    color: white;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.portfolio {
+    display: grid !important;
+    grid-template: auto auto auto auto auto / 1fr 1fr 1fr !important;
+    grid-column-gap: 10px !important;
+    grid-row-gap: 10px !important;
+  }
+  
+  .image img {
+    width: 100% !important;
+    max-height: 15em;
+    object-fit: cover;
+  }
